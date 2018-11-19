@@ -28,6 +28,9 @@
                 <td>{{contact.firstName}}</td>
                 <td>{{contact.lastName}}</td>
                 <td>{{contact.email}}</td>
+                <td>
+                    <button @click="removeContact(contact)">Remove</button>
+                </td>
             </tr>
         </tbody>
     </table>
@@ -55,8 +58,14 @@ export default {
       methods: {
         addContact() {
             this.contacts.push(this.newContact);
-            this.newContact = {}
+            this.newContact = {};
            
+        },
+
+        removeContact(contact) {
+            let index = this.contacts.indexOf(contact);
+            this.contacts.splice(index, 1);
+            console.log(index);
         }
     },
 }
